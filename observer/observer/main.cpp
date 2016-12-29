@@ -5,19 +5,25 @@ using namespace std;
 
 class Observer // Observer类
 {
-public:    
+public:
+    
     virtual void update(string name, float height, float weight) = 0;
     virtual void display() = 0;
 };
 
-class Subject {
-public: 
-    virtual void registerObserver(Observer* pObserver) = 0;   
-    virtual void removeObserver(Observer* pObserver) = 0;   
+class Subject
+{
+public:
+    
+    virtual void registerObserver(Observer* pObserver) = 0;
+    
+    virtual void removeObserver(Observer* pObserver) = 0;
+    
     virtual void notifyObservers() = 0;
 };
 
-class Figure:public Subject {
+class Figure:public Subject
+{
 public:
     
     void setParameters(string name, float height, float weight) // 设置身高体重
@@ -56,24 +62,34 @@ private:
     
 };
 
-class Person:public Observer {
-public:   
-    Person(Figure* fig){ fig->registerObserver(this);}  
-
-    void update(string name, float height, float weight) { //重写Update函数 
+class Person:public Observer
+{
+public:
+    
+    Person(Figure* fig) //构造函数
+    {
+        fig->registerObserver(this);
+    }
+    
+    void update(string name, float height, float weight) //重写Update函数
+    {
         this->n	= name;
         this->h	= height;
         this->w	= weight;
         display();
-    }  
-
-    void display() { //重写Display函数
+    }
+    
+    void display() //重写Display函数
+    {
         cout << n <<"'s height is: " << h <<"cm." << endl;
         cout << n <<"'s weight is: " << w <<"kg." << endl;
-    }   
-
-private:    
-    string n;     float h, w; 
+    }
+    
+private:
+    
+    string n;
+    float h, w;
+    
 };
 
 int main()
