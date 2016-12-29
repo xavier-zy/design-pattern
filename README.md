@@ -1,2 +1,3 @@
-# design-pattern
+# Design pattern
 =================
+##Observer  Composite  UndoRedo
